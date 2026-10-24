@@ -1,0 +1,29 @@
+# --- Python / backend ---
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+htmlcov/
+.coverage
+
+# --- Node / frontend ---
+node_modules/
+web/dist/
+web/.vite/
+*.tsbuildinfo
+
+# --- Secrets (hard rule 4: never commit real keys) ---
+.env
+.env.local
+.env.*.local
+!.env.example
+
+# --- OS / editor ---
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

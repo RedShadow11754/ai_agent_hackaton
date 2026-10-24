@@ -1,0 +1,19 @@
+{
+  "approved": false,
+  "payload": {
+    "type": "assessment",
+    "investigation_id": "INV-TEST-0001",
+    "urls": [],
+    "indicators": [],
+    "evidence": [],
+    "attack_sequence": [],
+    "guidance": [],
+    "risk": {"score": 10, "band": "Low / Inconclusive", "breakdown": []},
+    "assessment": "Low / Inconclusive: nothing in the text clearly indicates an attack, but this is not proof that the message is legitimate.",
+    "next_steps": ["Verify the request with the user through a known channel."],
+    "draft": "Please do not click any links in that message until we verify it.",
+    "validation": {"passed": true, "issues": []},
+    "activity": []
+  },
+  "message": "Test message"
+}

@@ -1,0 +1,19 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Hard rule 6: message and model text is rendered as plain text only. The app
+   never uses dangerouslySetInnerHTML, and URLs are shown defanged and
+   non-clickable. Keep any typography rules here so plain text stays readable. */
+
+@layer base {
+  body {
+    @apply bg-slate-50 text-slate-900 antialiased;
+  }
+
+  /* Message text is displayed in a monospace block so whitespace and any
+     lookalike characters remain visible to the analyst. */
+  .message-text {
+    @apply whitespace-pre-wrap break-words font-mono text-sm;
+  }
+}

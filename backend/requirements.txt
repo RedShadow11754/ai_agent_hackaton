@@ -1,0 +1,20 @@
+# Backend runtime + test dependencies (Python 3.11+).
+# Install:  pip install -r backend/requirements.txt
+
+# --- Web framework ---
+fastapi>=0.111,<1.0
+uvicorn[standard]>=0.30,<1.0
+
+# --- Validation / settings ---
+pydantic>=2.7,<3.0
+pydantic-settings>=2.3,<3.0
+
+# --- Outbound HTTP (Gemini REST calls only; never used to fetch message URLs) ---
+httpx>=0.27,<1.0
+
+# --- Database (backend only, service role key) ---
+supabase>=2.5,<3.0
+
+# --- Tests ---
+pytest>=8.2,<9.0
+pytest-asyncio>=0.23,<1.0

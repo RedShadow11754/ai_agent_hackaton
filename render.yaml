@@ -1,0 +1,46 @@
+# Single Render web service.
+#
+# The build compiles the React app, then FastAPI serves `web/dist` from the same
+# origin as `/api` (one URL, no CORS). Secrets are NOT stored here: they are set
+# in the Render dashboard and marked `sync: false`.
+#
+# FREE-TIER CAVEAT: this service sleeps when idle and takes ~30-60s to wake on
+# the first request. Supabase free projects pause after ~1 week of inactivity.
+# Wake both before judging.
+
+services:
+  - type: web
+    name: suspicious-message-agent
+    runtime: python
+    plan: free
+    region: oregon
+    rootDir: .
+    buildCommand: >-
+      pip install -r backend/requirements.txt &&
+      cd web && npm ci && npm run build
+    # Serve the API and the built SPA from the same process.
+    startCommand: cd backend && uvicorn app.main:app --host 0.0.0.0 --port $PORT
+    healthCheckPath: /api/health
+    autoDeploy: true
+    envVars:
+      - key: PYTHON_VERSION
+        value: "3.11.9"
+      - key: ENVIRONMENT
+        value: production
+      - key: LLM_PROVIDER
+        value: gemini
+      - key: GEMINI_MODEL
+        value: gemini-1.5-flash
+      - key: MAX_TOOL_CALLS
+        value: "8"
+      - key: MAX_MESSAGE_CHARS
+        value: "8000"
+      - key: RATE_LIMIT_PER_MINUTE
+        value: "30"
+      # Secrets: set these in the Render dashboard, never in this file.
+      - key: GEMINI_API_KEY
+        sync: false
+      - key: SUPABASE_URL
+        sync: false
+      - key: SUPABASE_SERVICE_KEY
+        sync: false
