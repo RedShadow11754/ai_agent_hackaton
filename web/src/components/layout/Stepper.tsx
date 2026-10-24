@@ -6,10 +6,10 @@ interface StepperProps {
 
 export function Stepper({ currentStep }: StepperProps) {
   const steps = [
-    { number: 1, label: 'Investigate' },
-    { number: 2, label: 'Results' },
-    { number: 3, label: 'Review' },
-    { number: 4, label: 'Saved' },
+    { number: 1, label: 'Investigate', link: "/" },
+    { number: 2, label: 'Results', link: "/results" },
+    { number: 3, label: 'Review', link: "/review" },
+    { number: 4, label: 'Saved', link: "/incidents" },
   ];
   
   return (
